@@ -1,6 +1,6 @@
 # Pathlight account and legal setup
 
-The multipage site and Supabase integration are implemented. No Supabase project or public business contact has been connected in this workspace. Live account creation and email delivery have not been tested against a provider. This setup does not turn the analytics demo into a connected analytics product.
+The multipage site and Supabase integration are implemented. The public Supabase connection is configured. Public business contact details and Google OAuth provider credentials still need configuration. Live account creation and email delivery have not been tested against a provider. This setup does not turn the analytics demo into a connected analytics product.
 
 ## Connect authentication
 
@@ -16,6 +16,7 @@ This is a static, browser-based Supabase integration. The SDK verifies users aga
 The account HTML is a public shell, not a server authorization boundary. There is no private analytics database in this implementation. When adding one, enforce authorization in Supabase Row Level Security and/or the backend for every operation. Do not rely on client-side redirects. Signup acceptance is included in user metadata; that metadata is user-editable and is not an immutable legal acceptance audit record. A server-controlled acceptance record should be added if durable evidence is required.
 
 Official implementation references:
+
 - [Supabase password authentication](https://supabase.com/docs/guides/auth/passwords)
 - [Supabase redirect URL configuration](https://supabase.com/docs/guides/auth/redirect-urls)
 - [Supabase custom SMTP](https://supabase.com/docs/guides/auth/auth-smtp)
@@ -28,6 +29,7 @@ The legal pages are pre-launch drafts, not a determination that every law applic
 Fill `operatorName`, `jurisdiction`, `postalAddress`, and `contactEmail` in `site.config.json` with real public business details. Use an address suitable for public disclosure; it need not be a home address. These values appear in the generated documents and contact page. Confirm `policyVersion` before launch.
 
 Review and tailor `site/pages.mjs` for:
+
 - Operator identity, location, intended customer locations, and applicable consumer and privacy rules.
 - Actual hosting and email processors, processing locations, retention durations, deletion workflow, international-transfer safeguards, and a working privacy request channel.
 - Which privacy rights and statutory disclosures apply to the operator and audience. Avoid claiming an exhaustive universal set of required documents.
@@ -35,9 +37,10 @@ Review and tailor `site/pages.mjs` for:
 - Future billing terms, renewal, cancellation, and refund disclosures before offering paid accounts. This preview has no checkout or charges.
 - Optional tracking consent before introducing nonessential cookies or storage where applicable. No marketing trackers are installed now, so there is no decorative consent banner that promises controls it does not implement.
 
-Once the documents and operational practices have been reviewed for the actual business, set `legalReviewed` to `true`. Registration requires that flag plus all four public business fields and configured authentication. Login for existing users does not require this flag. This is a release safeguard, not a legal certification.
+Once the documents and operational practices have been reviewed for the actual business, set `legalReviewed` to `true`. Registration is controlled separately by `registrationOpen` in `site.config.json` and requires configured authentication. Set it to `true` to open email registration and Google sign-in, or `false` to close registration. The legal review flag controls the draft notices.
 
 Sources used to scope the drafts:
+
 - [FTC: Consumer Privacy](https://www.ftc.gov/business-guidance/privacy-security/consumer-privacy)
 - [FTC: Privacy and Security](https://www.ftc.gov/business-guidance/privacy-security)
 - [ICO: Cookies and privacy notices in detail](https://ico.org.uk/for-organisations/advice-for-small-organisations/privacy-notices-and-cookies/cookies-and-privacy-notices-in-detail/)
@@ -55,3 +58,22 @@ Deploy only `dist/` to a static host, with directory index support for `/login/`
 The local server serves an explicit allowlist of site assets and pages. It does not expose `.env`, `.git`, source, or configuration files. Restart any server already running before these changes so the new routes become available.
 
 Missing URLs return the styled 404 page with HTTP status 404 in the included server, including nested unknown paths and malformed URLs. `dist/404.html` is also generated for static hosts; configure the host to use it as the error document while preserving the 404 status.
+
+## Google sign-in
+
+The login and signup pages include Google OAuth using the existing `/auth/callback/` route. Google OAuth may create an account on first login, so both Google buttons respect `registrationReady`. Set `registrationOpen` to `true` with configured authentication to open registration. Google signup checks the terms checkbox; unlike email signup, OAuth does not currently record terms acceptance metadata.
+
+1. In Google Auth Platform, configure branding, audience, and the `openid`, email, and profile scopes. Create a Web application OAuth client.
+2. Add the development origin `http://localhost:5173` and your production origin under Authorized JavaScript origins.
+3. Add `https://xgvkltgbommhxhtlgcud.supabase.co/auth/v1/callback` under Authorized redirect URIs.
+4. In Supabase Authentication → Sign In / Providers → Google, enable Google and save the Google OAuth Client ID and Client Secret. Supabase API keys are not Google OAuth credentials.
+5. In Supabase Authentication → URL Configuration, allow `http://localhost:5173/auth/callback/` and the production equivalent, and set Site URL to the production origin.
+6. Rebuild/restart the app and test Continue with Google, the return to `/account/`, cancellation, and logout.
+
+Only the publishable Supabase key belongs in site configuration. Rotate exposed privileged credentials in Supabase. No privileged keys are needed for this integration.
+
+Reference: https://supabase.com/docs/guides/auth/social-login/auth-google
+
+## Dashboard
+
+Successful login and confirmation return to `/dashboard/`. The dashboard verifies the session with Supabase before revealing the workspace and redirects visitors without a valid session to `/login/`. Logout hides the workspace and clears the local session. Include `/dashboard/` in static hosting routes. Like the account page, the dashboard is a public HTML shell; private data must be authorized by the backend/RLS. Metrics are empty until a real analytics integration is implemented.

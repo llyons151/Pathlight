@@ -7,15 +7,31 @@
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/serve.mjs --production",
-    "test": "npm run build && node --test scripts/tests/*.test.mjs"
+    "test": "npm run build && node --test scripts/tests/*.test.mjs",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:unit": "node --test scripts/tests/*.test.mjs",
+    "test:coverage": "npm run build && node --experimental-test-coverage --test-coverage-include=site/auth-actions.js --test-coverage-lines=100 --test-coverage-branches=100 --test-coverage-functions=100 --test scripts/tests/*.test.mjs",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:ui": "npm run build && playwright test --ui",
+    "test:report": "playwright show-report",
+    "check": "npm run lint && npm run format:check && npm run test:coverage && npm run test:e2e",
+    "audit": "npm audit --audit-level=high"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0"
   },
   "devDependencies": {
-    "esbuild": "^0.28.2"
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.10.0",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.13.0"
   }
 }

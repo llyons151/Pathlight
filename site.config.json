@@ -3,8 +3,9 @@
   "jurisdiction": "",
   "contactEmail": "",
   "postalAddress": "",
-  "supabaseUrl": "",
-  "supabasePublishableKey": "",
+  "supabaseUrl": "https://xgvkltgbommhxhtlgcud.supabase.co",
+  "supabasePublishableKey": "sb_publishable_YhvUoLzcATgL0QouDZBNTQ_y83OJa_f",
   "legalReviewed": false,
-  "policyVersion": "2026-09-07"
+  "policyVersion": "2026-09-07",
+  "registrationOpen": true
 }

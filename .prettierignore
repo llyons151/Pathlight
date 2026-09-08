@@ -1,9 +1,9 @@
 node_modules/
 dist/
+.generated/
 output/
 .playwright-cli/
-.generated/
-.env
-.env.*
 playwright-report/
 test-results/
+package-lock.json
+globe-land.js

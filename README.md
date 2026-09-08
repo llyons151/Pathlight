@@ -34,3 +34,11 @@ The landing page features a canvas globe with rotating geographic land samples, 
 The site now includes login, signup, email confirmation, password recovery, an account page, contact, Terms, Privacy, Cookies, Acceptable Use, and a custom 404. Account actions use the bundled Supabase SDK. Configure the public project values and real business details in `site.config.json`; see [LAUNCH-SETUP.md](LAUNCH-SETUP.md) for activation and the outstanding legal review. No authentication provider or contact inbox is connected by default.
 
 Run `npm test` for the build, account action tests, page/link checks, custom 404 status checks, and source-file protection checks. Restart an existing dev server to load the new routes. Static hosts should serve `dist/404.html` with status 404 for missing URLs.
+
+## Quality checks
+
+Run `npm run check` for lint, formatting, unit coverage, and browser checks. The coverage threshold applies to `site/auth-actions.js`: lines, branches, and functions must each reach 100%.
+
+Install browser binaries and system dependencies with `npx playwright install --with-deps` on a supported host before running `npm run test:e2e`. Browser tests cover Chromium, Firefox, WebKit, iPhone, and Android layouts, including demo interactions, keyboard controls, horizontal overflow, and automated accessibility checks. External requests are blocked during these tests; live authentication and email delivery still require the checks in [LAUNCH-SETUP.md](LAUNCH-SETUP.md).
+
+On systems where WebKit dependencies are unavailable, run `npm run test:e2e -- --project=chromium --project=firefox --project=android` for the locally supported subset. The full suite, including WebKit and iPhone, runs in the Ubuntu CI job. Use `npm run test:report` to inspect the latest browser results. CI also checks Node.js 22 and 24 and runs `npm run audit` for dependency vulnerabilities.
