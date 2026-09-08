@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f8f7f4" />
+  <meta name="description" content="Meet Pathlight. AI-assisted analytics that helps you understand user behavior, uncover friction, and decide what to improve next." />
+  <title>Pathlight — Find the why behind the click.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e4ed9c'/%3E%3Cpath d='M18 46L46 18M20 18h26v26' fill='none' stroke='%23252722' stroke-width='5'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/pages.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true">
+    <svg class="light-field" viewBox="0 0 1800 1400" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x2=".9" y2="1"><stop stop-color="#8eaaff"/><stop offset=".42" stop-color="#8180ff"/><stop offset="1" stop-color="#080d39"/></linearGradient>
+        <radialGradient id="glow"><stop stop-color="#f1f3ff" stop-opacity=".98"/><stop offset=".42" stop-color="#c4dfff" stop-opacity=".8"/><stop offset="1" stop-color="#a0beff" stop-opacity="0"/></radialGradient>
+        <filter id="soft"><feGaussianBlur stdDeviation="55"/></filter>
+        <filter id="ripples"><feTurbulence type="fractalNoise" baseFrequency=".007 .045" numOctaves="3" seed="8"/><feColorMatrix type="saturate" values="0"/><feGaussianBlur stdDeviation=".6"/></filter>
+      </defs>
+      <path fill="url(#sky)" d="M0 0h1800v1400H0z"/>
+      <ellipse cx="690" cy="145" rx="860" ry="780" fill="url(#glow)" transform="rotate(26 690 145)"/>
+      <g filter="url(#soft)"><path d="M-190 590C230 610 290 160 840-130" fill="none" stroke="#d5eaff" stroke-width="190" opacity=".5"/><ellipse cx="1580" cy="280" rx="390" ry="410" fill="#7764ff" opacity=".67"/><path d="M-200 610Q130 1060 590 1290L-200 1450Z" fill="#051a70"/><ellipse cx="970" cy="-10" rx="220" ry="160" fill="#f3efff" opacity=".8"/></g>
+      <path d="M0 0h1800v1400H0z" filter="url(#ripples)" opacity=".12" style="mix-blend-mode:soft-light"/>
+    </svg>
+    <div class="flow-layer flow-pearl"></div>
+    <div class="flow-layer flow-violet"></div>
+    <div class="flow-layer flow-blue"></div>
+    <div class="light-beam"></div>
+  </div>
+  <button class="motion-toggle" id="motion-toggle" type="button" aria-label="Pause background animation" aria-pressed="false" title="Pause background animation" hidden><span aria-hidden="true">Ⅱ</span></button>
+  <header class="header wrap">
+    <a class="brand" href="#" aria-label="Pathlight home"><span class="brand-icon" aria-hidden="true">↗</span>pathlight</a>
+    <nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#questions">FAQ</a></nav>
+    <div class="header-actions">
+      <a class="login-link" href="/login/">Log in</a>
+      <a class="button small dark" href="#demo">Explore the demo <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-glass">
+      <div class="app-icon" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M16 47 47 16M17 16h30v30" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="m17 34 13-13M30 47l13-13" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".35"/></svg></div>
+      <h1><span class="mobile-hero-title">Pathlight</span><span class="desktop-hero-title">Find the why behind the click.<br>See a clearer path forward.</span></h1>
+      <p class="hero-copy"><span class="mobile-hero-copy">Find the why behind the click.<br class="mobile-break"> Your AI analytics partner.</span><span class="desktop-hero-copy">Meet your AI analytics partner.<br>Understand the journeys, uncover the friction, and turn<br class="desktop-copy-break"> everyday clicks into your next good decision.</span></p>
+      <div class="hero-actions"><a class="button dark" href="#users">Explore Pathlight <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="hero-note">A clearer picture. A smarter next move.</div>
+      <div class="capability-strip"><span>Follow every journey</span><span>Find the friction</span><span>Ask your data</span><span>Know what’s next</span></div>
+    </section>
+
+    <section class="world-section" id="users" aria-labelledby="world-title">
+      <div class="world-heading"><div class="world-eyebrow"><span></span> EVERY CLICK HAS A HUMAN SIDE</div><h2 id="world-title">Understand your users.<br><em>Open up their world.</em></h2><p>Real people. Different journeys. A clearer picture of what matters.</p></div>
+      <div class="world-scene">
+        <div class="world-halo" aria-hidden="true"></div>
+        <canvas id="user-globe" aria-label="Rotating Earth with illuminated visitor locations and connected journeys" role="img"></canvas>
+        <div class="visitor-card visitor-one"><div class="visitor-top"><span class="person-avatar avatar-one">A</span><div><strong>A new perspective</strong><span>Amara · London, UK</span></div><span class="visitor-dot"></span></div><p>Found you through a story.<br>Stayed for what comes next.</p><div class="visitor-path">Journal <i>→</i> Product <i>→</i> <b>Exploring</b></div></div>
+        <div class="visitor-card visitor-two"><div class="visitor-top"><span class="person-avatar avatar-two">K</span><div><strong>A familiar face</strong><span>Kai · Tokyo, Japan</span></div><span class="visitor-dot"></span></div><p>Back for a second look.<br>One step closer to “this is it.”</p><div class="visitor-path">Return visit <i>→</i> <b>Checkout</b></div></div>
+        <div class="world-coordinate coordinate-left"><span>51°30′ N / 00°07′ W</span><i></i> A world of individual stories</div>
+        <div class="world-coordinate coordinate-right"><span>FROM SIGNAL TO UNDERSTANDING</span><i></i> Find the person in the pattern</div>
+        <div class="globe-controls"><span class="globe-status"></span><span>A connected world</span><span class="control-divider"></span><button id="globe-toggle" type="button" aria-label="Pause globe rotation" aria-pressed="false">Ⅱ</button></div>
+      </div>
+      <div class="world-caption"><span>BEHIND EVERY DATA POINT, A PERSON.</span><p>See their journey. Understand their friction. Make their next visit better.</p><small>Illustrative visitor stories</small></div>
+    </section>
+    <details class="product-demo wrap" id="demo"><summary>Go deeper. Explore the interactive demo <span aria-hidden="true">↗</span></summary>
+    <section class="demo-stage wrap" aria-label="Interactive Pathlight product demo">
+      <div class="stage-top"><span><span class="spark">✳</span> A little context changes everything.</span><span class="stage-label">INTERACTIVE PREVIEW <span aria-hidden="true">↙</span></span></div>
+      <div class="dashboard">
+        <aside class="sidebar">
+          <div class="dashboard-brand"><span class="brand-icon">↗</span>pathlight</div>
+          <div class="site-selector"><span class="site-avatar">S</span> studio.example <span class="muted">⌄</span></div>
+          <div class="sidebar-label">WORKSPACE</div>
+          <a class="sidebar-link active" href="#demo"><span>◫</span> Overview</a>
+          <a class="sidebar-link" href="#insight"><span>✳</span> AI insights <span class="count">3</span></a>
+          <a class="sidebar-link" href="#journey"><span>⑂</span> User journeys</a>
+          <div class="sidebar-bottom"><span class="live-dot"></span> Illustrative sample data</div>
+        </aside>
+        <div class="dashboard-main">
+          <div class="dashboard-top"><span>Workspace <span class="crumb">/</span> <b>Overview</b></span><span class="demo-badge">DEMO</span></div>
+          <div class="overview-heading"><div><h2>The bigger picture.</h2><p>Here’s what’s happening on your website.</p></div><label class="date-select"><span class="sr-only">Reporting period</span><select id="period"><option value="week">Last 7 days</option><option value="month">Last 30 days</option></select></label></div>
+          <div class="metrics"><div><span>Unique visitors</span><strong id="visitors">12,846</strong><small>↗ <span id="visitor-change">18.6%</span> <i>vs. previous period</i></small></div><div><span>Conversion rate</span><strong id="conversion">3.24<span>%</span></strong><small>↗ 0.8% <i>vs. previous period</i></small></div><div><span>Avg. session duration</span><strong id="duration">2m 48s</strong><small>↗ 12.3% <i>vs. previous period</i></small></div></div>
+          <div class="dashboard-panels">
+            <div class="journey-panel" id="journey"><div class="panel-heading"><h3>Your conversion journey</h3><span>Visitors</span></div><div class="funnel"><div><span>Landing page</span><b id="funnel-start">12,846</b><div class="bar"><i style="width:100%"></i></div></div><div><span>Product page</span><b id="funnel-product">7,194</b><div class="bar"><i style="width:56%"></i></div></div><div><span>Checkout</span><b id="funnel-checkout">1,038</b><div class="bar"><i style="width:8.08%"></i></div></div><div><span>Purchase</span><b id="funnel-purchase">416</b><div class="bar"><i style="width:3.24%"></i></div></div></div><div class="chart-foot"><span class="chart-key"></span> Follow the journey. Find the friction.</div></div>
+            <div class="insight-panel" id="insight" aria-live="polite"><div class="insight-label"><span>✳ &nbsp; PATHLIGHT INSIGHT</span><span id="insight-number">01 / 03</span></div><h3 id="insight-title">A small screen. <br>A big opportunity.</h3><p id="insight-copy">Mobile visitors reach checkout, but leave more often than desktop visitors. The shipping step is worth a closer look.</p><div class="evidence"><span id="insight-stat">2.1×</span><p id="insight-evidence">higher checkout drop-off<br>on mobile devices</p></div><button class="insight-next" id="next-insight">Explore another insight <span aria-hidden="true">↗</span></button><div class="hypothesis">Suggested explanation · sample data</div></div>
+          </div>
+          <form class="ask-form" id="ask-form"><span class="spark" aria-hidden="true">✳</span><label class="sr-only" for="question">Ask about the sample analytics</label><input id="question" placeholder="Ask anything about your users…" maxlength="300" required /><button type="submit" aria-label="Ask Pathlight">↑</button></form>
+          <div id="answer" class="answer" role="status" hidden></div>
+        </div>
+      </div>
+      <div class="stage-bottom"><span>From “what happened?” to “what’s next?”</span><span>Built for curious teams <span aria-hidden="true">↗</span></span></div>
+    </section>
+
+    </details>
+
+    <section class="intro wrap" id="how-it-works"><div class="eyebrow">THE SIGNAL IN THE NOISE</div><h2>Numbers tell a story.<br>Let’s make sense of it.</h2><p>Bring your questions. Pathlight connects the dots between what people do, where they get stuck, and what you could improve.</p></section>
+    <section class="features wrap" id="features">
+      <article><div class="feature-art path-art" aria-hidden="true"><span>Visit</span><i></i><span>Explore</span><i></i><span class="end-node">Convert ↗</span><div class="branch">Where did they go? ↘</div></div><div class="feature-number">01 / OBSERVE</div><h3>See the whole journey.</h3><p>Follow the paths people take through your site. Find the moments that move them forward—and the ones that stop them.</p></article>
+      <article><div class="feature-art question-art" aria-hidden="true"><div>Why are visitors leaving checkout? <span>↗</span></div><div><span>✳</span> Let’s follow the evidence.</div></div><div class="feature-number">02 / UNDERSTAND</div><h3>Ask better questions.</h3><p>Explore your analytics in plain language. Get possible explanations grounded in behavior, with the evidence close at hand.</p></article>
+      <article><div class="feature-art action-art" aria-hidden="true"><div><span class="check">✓</span> Spot the friction</div><div><span class="check">✓</span> Shape an experiment</div><div><span class="empty-check"></span> Measure the difference <span>↗</span></div></div><div class="feature-number">03 / IMPROVE</div><h3>Make your next move count.</h3><p>Turn an insight into something you can test. Make a change, measure the result, and keep learning from your users.</p></article>
+    </section>
+    <section class="manifesto wrap"><span class="spark">✳</span><h2>Analytics for people<br>who ask <em>why.</em></h2><p>For the builders, the small teams, and the quietly curious.<br>You don’t need another dashboard. You need a way forward.</p><a class="button dark" href="#demo">Take a closer look <span aria-hidden="true">↗</span></a></section>
+    <section class="faq wrap" id="questions"><h2>A few good questions.</h2><div><details><summary>What is Pathlight?<span>+</span></summary><p>Pathlight is an analytics platform in development. It’s designed to combine website behavior tracking with AI-assisted exploration, so you can identify friction and plan improvements.</p></details><details><summary>Is this real website data?<span>+</span></summary><p>No. This interactive preview uses illustrative sample data. Change the reporting period, explore the insights, or ask a question to try the concept. No website is connected.</p></details><details><summary>Can AI really tell me why users leave?<span>+</span></summary><p>Behavior can reveal patterns, but it can’t prove intent. Pathlight’s approach is to offer possible explanations backed by observations, then help you validate them with user feedback and experiments.</p></details><details><summary>Can I connect my website yet?<span>+</span></summary><p>Not yet. This is a product preview. Website integration, live tracking, and connected AI analysis are still to be built.</p></details></div></section>
+  </main>
+  <footer class="wrap"><a class="brand" href="#"><span class="brand-icon" aria-hidden="true">↗</span>pathlight</a><span>A clearer path forward.</span><span>© <span id="year">2026</span> Pathlight</span></footer>
+  <nav class="landing-legal" aria-label="Legal and contact"><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/acceptable-use/">Acceptable use</a><a href="/contact/">Contact</a></nav>
+  <script src="/app.js"></script>
+  <script type="module" src="/water.js"></script>
+  <script type="module" src="/globe.js"></script>
+</body>
+</html>
